@@ -1,0 +1,64 @@
+"""Problema 1:
+Escriba un programa que pida de forma aleatoria 20 números (entre el 1 y el 10), los almacene en una
+lista y muestre aquel o aquellos que hayan aparecido más veces. Sugerencia: use la función
+ramdon.randint(1,10) """
+import random
+lista = [random.randint(1,10) for i in range(20)]
+print(lista)
+maxnum = 0
+resultado = lista[0]
+for i in lista:
+    freq = lista.count(i)
+    if freq > maxnum:
+        maxnum = freq
+        res = i
+print (res)
+
+"""Problema 2:
+Escriba un programa que haga una lista de números primos entre 1 y 1000. Debe mostrar la lista."""
+min_num = 1
+max_num = 1000
+for x in range(min_num, max_num + 1):
+   # all prime numbers are greater than 1
+   if x > 1:
+       for i in range(2, x):
+           if (x % i) == 0:
+               break
+       else:
+           print(x)
+
+"""Problema 3:
+Escriba un programa que lea un caráter cualquiera introducido a través del teclado y muestre el mensaje
+“Es una MAYUSCULA”, cuando el el character sea una letrea mayúscula y el mensaje ‘Es una
+MINUSCULA’ cuando el character sea una minúscula. En caso de que el carácter introducido no sea una
+letra, debe mostrar el mensaje: ‘No es una letra’. No tome en cuenta los caracteres especiales (No usar). """
+
+import re
+regex = re.compile('[@_!#$%^&*()<>?/\|}{~:]')
+algo = str(input("Digite un chAracter. No usar caracteres especiales: "))
+if (regex.search(algo) != None):
+    print("Caracter invalido. Digite 1 character. No usar cHaracteres especiales: ")
+    algo = str(input("Digite 1 character. No usar cHaracteres especiales: "))
+elif algo.islower():
+    print("Es una MINUSCULA")
+elif algo.isupper():
+    print("Es una MAYUSCULA")
+else:
+    print("No es una letra")
+
+
+
+"""Problema 4:
+Escriba un programa que utilice un string (que contenga un parrafo de mas de 20 palabras) para obtener
+un diccionario que indique la cantidad de veces que aparece cada palabra en dicho string. """
+parrafo = "La historia comienza cuando Bulma llega donde Goku buscando las Esferas del Dragón, pero debido a que el joven no quiere entregarle el artefacto la ingeniosa joven lo convence para que la acompañe en el viaje para reunir las siete Esferas del Dragón. Bulma convenciendo a Goku de darle la suya de 4 estrellas."
+parrafo_partido = parrafo.split()
+
+parrafo_lista_freq = []
+for w in parrafo_partido:
+    parrafo_lista_freq.append(parrafo_partido.count(w))
+print("las palabras se repiten estas veces: " , list(zip(parrafo_partido, parrafo_lista_freq)))
+
+
+
+
